@@ -7,8 +7,7 @@ from .image import transform_and_pad_image
 
 def load_tags(tags_path):
     with open(tags_path, "r") as tags_stream:
-        tags = [tag for tag in (tag.strip() for tag in tags_stream) if tag]
-        return tags
+        return [tag for tag in (tag.strip() for tag in tags_stream) if tag]
 
 def load_image_for_evaluate(
     image_raw: bytes, width: int, height: int, normalize: bool = True
