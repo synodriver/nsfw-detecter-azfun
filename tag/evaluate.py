@@ -18,10 +18,11 @@ def evaluate_image(
     y = model.predict(image)[0]
     del image
 
-    result_dict = {}
+    result_dict = {
+        tag: float(y[i]) for i, tag in enumerate(tags) if y[i] >= threshold
+    }
 
-    for i, tag in enumerate(tags):
-        if y[i] >= threshold: result_dict[tag] = float(y[i])
+
     del y
 
     return result_dict
